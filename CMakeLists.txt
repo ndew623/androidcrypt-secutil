@@ -18,6 +18,9 @@ endif()
 # Option to control ability to install the library
 option(secutil_INSTALL "Install the Security-Related Utilities Library" ON)
 
+# Determine whether clang-tidy should be used during build
+option(secutil_CLANG_TIDY "Use clang-tidy to perform linting during build" OFF)
+
 add_subdirectory(dependencies)
 add_subdirectory(src)
 

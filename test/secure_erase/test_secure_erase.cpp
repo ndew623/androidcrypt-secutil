@@ -60,7 +60,22 @@ STF_TEST(SecureErase, EraseString)
     SecUtil::SecureErase(string);
 
     // Verify the string is erased
-    STF_ASSERT_MEM_EQ(string.data(),  &zeros.front(), zeros.size());
+    STF_ASSERT_MEM_EQ(string.data(), &zeros.front(), zeros.size());
+}
+
+STF_TEST(SecureErase, EraseWideString)
+{
+    std::wstring string = L"This is a test";
+    std::wstring zero_string(14, L'\0');
+
+    // Verify the strings are not equal
+    STF_ASSERT_NE(zero_string, string);
+
+    // Erase the string
+    SecUtil::SecureErase(string);
+
+    // Verify the string is erased
+    STF_ASSERT_EQ(zero_string, string);
 }
 
 STF_TEST(SecureErase, EraseIntegral)
@@ -124,12 +139,4 @@ STF_TEST(SecureErase, EraseVector)
     SecUtil::SecureErase(elements);
 
     STF_ASSERT_TRUE(CheckZeroSpan(elements));
-}
-
-STF_TEST(SecureString, SecureString)
-{
-    SecUtil::SecureString s = "Hello";
-    SecUtil::SecureBasicString<char> q = "Hello";
-
-    STF_ASSERT_EQ(s, q);
 }

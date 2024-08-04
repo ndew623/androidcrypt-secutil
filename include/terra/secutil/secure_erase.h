@@ -100,7 +100,7 @@ void SecureErase(std::span<T> values)
 template<typename T>
 void SecureErase(std::basic_string<T> &value)
 {
-    SecureErase(std::span<T>(value.data(), value.length()));
+    SecureErase(value.data(), value.length() * sizeof(T));
 }
 
 /*

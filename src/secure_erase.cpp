@@ -18,9 +18,7 @@
 #if defined(_WIN32)
 #include <Windows.h>
 #else
-// The follow requests memset_s on Apple
-#define __STDC_WANT_LIB_EXT1__ 1
-#include <string.h>
+#include <cstring>
 #endif
 #include <terra/secutil/secure_erase.h>
 
