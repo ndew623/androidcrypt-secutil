@@ -14,7 +14,7 @@
  *      Since the SecureArray object destructs before the base class and its
  *      data elements and since some objects may need access to valid data
  *      during the destruction process, SecureArray is restricted to types
- *      that are always safe to erase (integers, floats, pointers, etc.)
+ *      that are always safe to erase (integers, floats, pointers, etc.).
  *      The intended use is to hold an array of integers or characters for
  *      security-related functions like encryption, authentication, password
  *      generation, and the like.
