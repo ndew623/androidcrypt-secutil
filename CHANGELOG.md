@@ -2,7 +2,7 @@
 
 v1.0.2
 
-- Improved the SecureAllocator object.
+- Improved the SecureAllocator object
 
 v1.0.1
 
