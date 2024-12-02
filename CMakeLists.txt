@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 # Define the secutil project
 project(secutil
-        VERSION 1.0.1.0
+        VERSION 1.0.2.0
         DESCRIPTION "Security-Related Utilities Library"
         LANGUAGES CXX)
 
