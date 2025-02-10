@@ -1,5 +1,5 @@
-Security Utility Library
-========================
+Security Utilities Library
+==========================
 
 This repository contains various security-related object and functions,
 including the following:

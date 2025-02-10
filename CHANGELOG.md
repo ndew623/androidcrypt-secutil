@@ -1,5 +1,9 @@
 # Change Log
 
+v1.0.3
+
+- Updated to latest Simple Test Framework (STF)
+
 v1.0.2
 
 - Improved the SecureAllocator object
