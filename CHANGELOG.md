@@ -1,5 +1,10 @@
 # Change Log
 
+v1.0.5
+
+- Corrected a bug in the logic that checks for explicit\_bzero due to
+  the introduction of FreeBSD support.
+
 v1.0.4
 
 - Updated build to check for explicit\_bzero() on FreeBSD
