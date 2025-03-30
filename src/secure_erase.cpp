@@ -63,8 +63,8 @@ void SecureErase(void *buffer, std::size_t length)
     SecureZeroMemory(buffer, length);
 #elif defined(__APPLE__) || defined(__STDC_LIB_EXT1__)
     memset_s(buffer, length, 0, length);
-#elif (defined(__linux__) || defined(__FreeBSD__) && \
-      defined(HAVE_EXPLICIT_BZERO))
+#elif (defined(__linux__) || defined(__FreeBSD__)) && \
+      defined(HAVE_EXPLICIT_BZERO)
     explicit_bzero(buffer, length);
 #else
     memset_secure_func(buffer, 0, length);
