@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 
 # Define the Security Utilities project
 project(secutil
-        VERSION 1.0.4.0
+        VERSION 1.0.5.0
         DESCRIPTION "Security-Related Utilities Library"
         LANGUAGES CXX)
 
