@@ -1,7 +1,7 @@
 /*
  *  test_secure_array.cpp
  *
- *  Copyright (C) 2024
+ *  Copyright (C) 2024, 2025
  *  Terrapane Corporation
  *  All Rights Reserved
  *
@@ -126,4 +126,27 @@ STF_TEST(SecureArray, TestArrayOfEnums)
     SecUtil::SecureErase(array_of_octets);
 
     STF_ASSERT_TRUE(CheckZeroAnySize(array_of_octets));
+}
+
+STF_TEST(SecureArray, TestInitializerList1)
+{
+    SecUtil::SecureArray<int, 5> array = {1, 2, 3, 4, 5};
+
+    STF_ASSERT_EQ(1, array[0]);
+    STF_ASSERT_EQ(2, array[1]);
+    STF_ASSERT_EQ(3, array[2]);
+    STF_ASSERT_EQ(4, array[3]);
+    STF_ASSERT_EQ(5, array[4]);
+}
+
+STF_TEST(SecureArray, TestInitializerList2)
+{
+    SecUtil::SecureArray<int, 5> array = {1, 2, 3};
+
+    STF_ASSERT_EQ(1, array[0]);
+    STF_ASSERT_EQ(2, array[1]);
+    STF_ASSERT_EQ(3, array[2]);
+    // These should be default initialized
+    STF_ASSERT_EQ(0, array[3]);
+    STF_ASSERT_EQ(0, array[4]);
 }

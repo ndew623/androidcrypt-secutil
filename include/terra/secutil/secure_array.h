@@ -1,7 +1,7 @@
 /*
  *  secure_array.h
  *
- *  Copyright (C) 2024
+ *  Copyright (C) 2024, 2025
  *  Terrapane Corporation
  *  All Rights Reserved
  *
@@ -13,11 +13,11 @@
  *      with the array is erased when the SecureArray object is destructed.
  *      Since the SecureArray object destructs before the base class and its
  *      data elements and since some objects may need access to valid data
- *      during the destruction process, SecureArray is restricted to types
- *      that are always safe to erase (integers, floats, pointers, etc.).
- *      The intended use is to hold an array of integers or characters for
- *      security-related functions like encryption, authentication, password
- *      generation, and the like.
+ *      during the destruction process, SecureArray is restricted to trivial
+ *      types are safe to be erased (integers, floats, pointers, trivial
+ *      structs, etc.).  The intended use is to hold an array of integers or
+ *      characters for security-related functions like encryption,
+ *      authentication, password generation, and the like.
  *
  *  Portability Issues:
  *      None.
@@ -34,23 +34,25 @@
 namespace Terra::SecUtil
 {
 
-template<typename T,
-         std::size_t N,
-         typename std::enable_if<std::is_arithmetic<T>::value ||
-                                 std::is_enum<T>::value ||
-                                 std::is_pointer<T>::value, bool>::type = true>
+template<typename T, std::size_t N>
+    requires std::is_trivial_v<T>
 class SecureArray : public std::array<T, N>
 {
     public:
         using std::array<T, N>::array;
         SecureArray(std::initializer_list<T> list)
         {
-            if (list.size() != std::array<T, N>::size())
+            // Ensure the initializer list is not too large
+            if (list.size() > N)
             {
-                throw std::invalid_argument("Initializer list does not match "
-                                            "the array size");
+                throw std::invalid_argument("Initializer list is too large");
             }
+
+            // Assign the first list.size() elements
             std::copy(list.begin(), list.end(), this->begin());
+
+            // Value-initialize the remaining elements
+            std::fill(this->begin() + list.size(), this->end(), T{});
         }
         virtual ~SecureArray()
         {

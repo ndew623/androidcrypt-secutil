@@ -1,5 +1,12 @@
 # Change Log
 
+v1.0.6
+
+- Updated SecureArray to not be constrained to trivial types (loosing the
+  previous constraint)
+- Changed the SecureArray to allow an initializer smaller than the array size,
+  which aligns with the behavior of std::array
+
 v1.0.5
 
 - Corrected a bug in the logic that checks for explicit\_bzero due to
