@@ -1,5 +1,10 @@
 # Change Log
 
+v1.0.7
+
+- Revised build options for Windows to enable additional warnings
+- Updated dependencies
+
 v1.0.6
 
 - Updated SecureArray to not be constrained to trivial types (loosing the
