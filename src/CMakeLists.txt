@@ -26,10 +26,7 @@ if(LINUX OR BSD)
     check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
 
     if(HAVE_EXPLICIT_BZERO)
-        message(STATUS "Explicit_bzero found")
         target_compile_definitions(secutil PRIVATE HAVE_EXPLICIT_BZERO)
-    else()
-        message(STATUS "Explicit_bzero not found")
     endif()
 endif()
 
