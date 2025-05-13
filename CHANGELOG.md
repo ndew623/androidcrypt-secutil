@@ -4,6 +4,7 @@ v1.0.7
 
 - Revised build options for Windows to enable additional warnings
 - Updated dependencies
+- Change the logic for checking for explicit_bzero support
 
 v1.0.6
 

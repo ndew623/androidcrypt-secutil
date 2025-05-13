@@ -22,11 +22,14 @@ target_compile_definitions(secutil PRIVATE __STDC_WANT_LIB_EXT1__=1)
 # Check to see of this system has explicit_bzero(), which was introduced
 # in glibc 2.25 in 2017
 if(LINUX OR BSD)
-    include(CheckSymbolExists)
-    check_symbol_exists(explicit_bzero "string.h" HAVE_EXPLICIT_BZERO)
+    include(CheckFunctionExists)
+    check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
 
     if(HAVE_EXPLICIT_BZERO)
+        message(STATUS "Explicit_bzero found")
         target_compile_definitions(secutil PRIVATE HAVE_EXPLICIT_BZERO)
+    else()
+        message(STATUS "Explicit_bzero not found")
     endif()
 endif()
 
