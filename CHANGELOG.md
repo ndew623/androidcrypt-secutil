@@ -2,9 +2,7 @@
 
 v1.0.7
 
-- Revised build options for Windows to enable additional warnings
-- Updated dependencies
-- Change the logic for checking for explicit\_bzero support
+- Expand explicit\_bzero() use to any Unix-Like system (if present)
 
 v1.0.6
 
@@ -12,11 +10,14 @@ v1.0.6
   previous constraint)
 - Changed the SecureArray to allow an initializer smaller than the array size,
   which aligns with the behavior of std::array
+- Revised build options for Windows to enable additional warnings
+- Updated dependencies
+- Change the logic for checking for explicit\_bzero support
 
 v1.0.5
 
 - Corrected a bug in the logic that checks for explicit\_bzero due to
-  the introduction of FreeBSD support.
+  the introduction of FreeBSD support
 
 v1.0.4
 

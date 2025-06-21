@@ -21,7 +21,7 @@ target_compile_definitions(secutil PRIVATE __STDC_WANT_LIB_EXT1__=1)
 
 # Check to see of this system has explicit_bzero(), which was introduced
 # in glibc 2.25 in 2017
-if(LINUX OR BSD)
+if(UNIX)
     include(CheckFunctionExists)
     check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
 
