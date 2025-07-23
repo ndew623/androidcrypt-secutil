@@ -1,7 +1,7 @@
 /*
  *  secure_erase.cpp
  *
- *  Copyright (C) 2024
+ *  Copyright (C) 2024, 2025
  *  Terrapane Corporation
  *  All Rights Reserved
  *
@@ -25,8 +25,7 @@
 namespace Terra::SecUtil
 {
 
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(__STDC_LIB_EXT1__) && \
-    !(defined(__unix__) && defined(HAVE_EXPLICIT_BZERO))
+#if !defined(_WIN32) && !defined(HAVE_EXPLICIT_BZERO) && !defined(HAVE_MEMSET_S)
 // Assign the volatile function pointer memset_secure to call std::memset.
 // The compiler should not optimize a call to a volatile function pointer,
 // so this function should not be compiled out during optimization.
@@ -60,9 +59,9 @@ void SecureErase(void *buffer, std::size_t length)
 
 #if defined(_WIN32)
     SecureZeroMemory(buffer, length);
-#elif defined(__APPLE__) || defined(__STDC_LIB_EXT1__)
+#elif defined(HAVE_MEMSET_S)
     memset_s(buffer, length, 0, length);
-#elif defined(__unix__) && defined(HAVE_EXPLICIT_BZERO)
+#elif defined(HAVE_EXPLICIT_BZERO)
     explicit_bzero(buffer, length);
 #else
     memset_secure_func(buffer, 0, length);

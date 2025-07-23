@@ -16,18 +16,18 @@ set_target_properties(secutil
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF)
 
-# Must define __STDC_WANT_LIB_EXT1__ to get memset_s
-target_compile_definitions(secutil PRIVATE __STDC_WANT_LIB_EXT1__=1)
+# Check for the existence of memset_s and explicit_bzero
+include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/memset_s.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/explicit_bzero.cmake)
 
-# Check to see of this system has explicit_bzero(), which was introduced
-# in glibc 2.25 in 2017
-if(UNIX)
-    include(CheckFunctionExists)
-    check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
+if(HAVE_EXPLICIT_BZERO)
+    target_compile_definitions(secutil PRIVATE HAVE_EXPLICIT_BZERO)
+endif()
 
-    if(HAVE_EXPLICIT_BZERO)
-        target_compile_definitions(secutil PRIVATE HAVE_EXPLICIT_BZERO)
-    endif()
+if(HAVE_MEMSET_S)
+    # Must define __STDC_WANT_LIB_EXT1__ to get memset_s
+    target_compile_definitions(secutil PRIVATE __STDC_WANT_LIB_EXT1__=1)
+    target_compile_definitions(secutil PRIVATE HAVE_MEMSET_S)
 endif()
 
 # If requesting clang-tidy, try to look for it
