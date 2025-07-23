@@ -1,5 +1,9 @@
 # Change Log
 
+v1.0.8
+
+- Change the way in which presence of explicit\_bzero and memset\_s are detected
+
 v1.0.7
 
 - Expand explicit\_bzero() use to any Unix-Like system (if present)
