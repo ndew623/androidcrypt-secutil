@@ -1,4 +1,5 @@
-add_subdirectory(secure_erase)
-add_subdirectory(secure_allocator)
 add_subdirectory(secure_array)
+add_subdirectory(secure_allocator)
+add_subdirectory(secure_deleter)
+add_subdirectory(secure_erase)
 add_subdirectory(secure_types)

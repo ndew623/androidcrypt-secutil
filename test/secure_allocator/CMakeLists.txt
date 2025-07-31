@@ -11,7 +11,7 @@ set_target_properties(test_secure_allocator
 
 target_compile_options(test_secure_allocator PRIVATE
     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>: -Wpedantic -Wextra -Wall>
-    $<$<CXX_COMPILER_ID:MSVC>: >)
+    $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>)
 
 add_test(NAME test_secure_allocator
          COMMAND test_secure_allocator)

@@ -3,6 +3,9 @@
 v1.0.8
 
 - Change the way in which presence of explicit\_bzero and memset\_s are detected
+- Defined a SecureArrayDeleter and SecureObjectDeleter to facilitate
+  secure deletion of arrays or objects created for use with std::unique_ptr
+  and std::shared_ptr.
 
 v1.0.7
 
