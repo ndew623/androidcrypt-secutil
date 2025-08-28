@@ -29,6 +29,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <type_traits>
+#include <ranges>
 #include "secure_erase.h"
 
 namespace Terra::SecUtil
@@ -49,10 +50,10 @@ class SecureArray : public std::array<T, N>
             }
 
             // Assign the first list.size() elements
-            std::copy(list.begin(), list.end(), this->begin());
+            std::ranges::copy(list, this->begin());
 
             // Value-initialize the remaining elements
-            std::fill(this->begin() + list.size(), this->end(), T{});
+            std::ranges::fill(*this | std::views::drop(list.size()), T{});
         }
         virtual ~SecureArray()
         {

@@ -125,10 +125,31 @@ struct SecureAllocator
      *  Comments:
      *      None.
      */
-    template<typename U>
-    constexpr bool operator==(const SecureAllocator<U> &) const noexcept
+    constexpr bool operator==(const SecureAllocator &) const noexcept
     {
         return true;
+    }
+
+    /*
+     *  SecureAllocator::operator!=()
+     *
+     *  Description:
+     *      Checks to see if memory allocated by one allocator cannot be freed
+     *      by another allocator.
+     *
+     *  Parameters:
+     *      other [in]
+     *          A reference to the other allocator object.
+     *
+     *  Returns:
+     *      Always returns false.
+     *
+     *  Comments:
+     *      None.
+     */
+    constexpr bool operator!=(const SecureAllocator &) const noexcept
+    {
+        return false;
     }
 };
 

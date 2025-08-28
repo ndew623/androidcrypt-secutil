@@ -6,6 +6,8 @@ v1.0.8
 - Defined a SecureArrayDeleter and SecureObjectDeleter to facilitate
   secure deletion of arrays or objects created for use with std::unique_ptr
   and std::shared_ptr.
+- Tighten the comparison operators in SecureAllocator
+- Use C++20 "ranges" methods for copy() and fill()
 
 v1.0.7
 
