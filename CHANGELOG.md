@@ -8,6 +8,7 @@ v1.0.8
   and std::shared_ptr.
 - Tighten the comparison operators in SecureAllocator
 - Use C++20 "ranges" methods for copy() and fill()
+- CMake changes to facilitate downstream testing
 
 v1.0.7
 

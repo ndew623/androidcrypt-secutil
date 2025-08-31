@@ -21,10 +21,11 @@ option(secutil_INSTALL "Install the Security-Related Utilities Library" ON)
 # Determine whether clang-tidy should be used during build
 option(secutil_CLANG_TIDY "Use clang-tidy to perform linting during build" OFF)
 
+# Ensure testing is enabled to surface tests in dependencies
+include(CTest)
+
 add_subdirectory(dependencies)
 add_subdirectory(src)
-
-include(CTest)
 
 if(BUILD_TESTING AND secutil_BUILD_TESTS)
     add_subdirectory(test)

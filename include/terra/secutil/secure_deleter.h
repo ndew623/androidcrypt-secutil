@@ -89,8 +89,6 @@ struct SecureObjectDeleter
         // Deallocate the array
         delete object;
     }
-
-    std::size_t size;
 };
 
 /*
