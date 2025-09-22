@@ -1,18 +1,23 @@
 # Change Log
 
+v1.0.9
+
+- CMake changes
+- Updated dependencies
+
 v1.0.8
 
-- Change the way in which presence of explicit\_bzero and memset\_s are detected
-- Defined a SecureArrayDeleter and SecureObjectDeleter to facilitate
-  secure deletion of arrays or objects created for use with std::unique_ptr
-  and std::shared_ptr.
-- Tighten the comparison operators in SecureAllocator
-- Use C++20 "ranges" methods for copy() and fill()
+- Change the way in which presence of `explicit_bzero` and `memset_s` are detected
+- Defined a `SecureArrayDeleter` and `SecureObjectDeleter` to facilitate
+  secure deletion of arrays or objects created for use with `std::unique_ptr`
+  and `std::shared_ptr`.
+- Tighten the comparison operators in `SecureAllocator`
+- Use C++20 "ranges" methods for `copy()` and `fill()`
 - CMake changes to facilitate downstream testing
 
 v1.0.7
 
-- Expand explicit\_bzero() use to any Unix-Like system (if present)
+- Expand `explicit_bzero()` use to any Unix-Like system (if present)
 
 v1.0.6
 
@@ -22,16 +27,16 @@ v1.0.6
   which aligns with the behavior of std::array
 - Revised build options for Windows to enable additional warnings
 - Updated dependencies
-- Change the logic for checking for explicit\_bzero support
+- Change the logic for checking for `explicit_bzero()` support
 
 v1.0.5
 
-- Corrected a bug in the logic that checks for explicit\_bzero due to
+- Corrected a bug in the logic that checks for `explicit_bzero()` due to
   the introduction of FreeBSD support
 
 v1.0.4
 
-- Updated build to check for explicit\_bzero() on FreeBSD
+- Updated build to check for `explicit_bzero()` on FreeBSD
 
 v1.0.3
 
@@ -43,7 +48,7 @@ v1.0.2
 
 v1.0.1
 
-- Test for explicit\_bzero() on Linux, as that was only introduced in 2017
+- Test for `explicit_bzero()` on Linux, as that was only introduced in 2017
 
 v1.0.0
 

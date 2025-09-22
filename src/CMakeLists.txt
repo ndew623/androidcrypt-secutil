@@ -1,3 +1,6 @@
+# Include standard installation directory variables
+include(GNUInstallDirs)
+
 # Create the library
 add_library(secutil STATIC secure_erase.cpp)
 add_library(Terra::secutil ALIAS secutil)
@@ -7,7 +10,8 @@ target_include_directories(secutil
     PRIVATE
         ${CMAKE_CURRENT_BINARY_DIR}
     PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>)
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # Specify the C++ standard to observe
 set_target_properties(secutil
@@ -48,7 +52,6 @@ target_compile_options(secutil
 
 # Install target and associated include files
 if(secutil_INSTALL)
-    include(GNUInstallDirs)
     install(TARGETS secutil EXPORT secutilTargets ARCHIVE)
     install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ TYPE INCLUDE)
     install(EXPORT secutilTargets
